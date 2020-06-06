@@ -149,16 +149,26 @@
   <ItemGroup>
     <ClInclude Include="FourInARowLib.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameBoard.h" />
+    <ClInclude Include="GameHost.h" />
+    <ClInclude Include="GameRules.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Ui.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FourInARowLib.cpp" />
+    <ClCompile Include="GameBoard.cpp" />
+    <ClCompile Include="GameHost.cpp" />
+    <ClCompile Include="GameRules.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Ui.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
