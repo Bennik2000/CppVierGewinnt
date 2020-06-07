@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleUi.h" />
     <ClInclude Include="FourInARowLib.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameBoard.h" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Ui.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleUi.cpp" />
     <ClCompile Include="FourInARowLib.cpp" />
     <ClCompile Include="GameBoard.cpp" />
     <ClCompile Include="GameHost.cpp" />
