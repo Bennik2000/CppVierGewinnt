@@ -12,7 +12,6 @@ class Ui
   public:
     virtual ~Ui() = default;
 
-  private:
     virtual void drawGame() = 0;
     virtual int readColumn() = 0;
     virtual void showWinner(TeamEnum team) = 0;
