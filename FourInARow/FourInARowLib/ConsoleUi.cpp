@@ -1,6 +1,8 @@
+#include "pch.h"
+
 #include <iostream>
 
-#include "ConsoleUi.h";
+#include "ConsoleUi.h"
 
 int ConsoleUi::showMultipleChoice(std::string message, std::vector<std::string> answers) {
     int result;
@@ -22,4 +24,25 @@ int ConsoleUi::showMultipleChoice(std::string message, std::vector<std::string> 
     }
 
     return result;
+}
+
+ConsoleUi::~ConsoleUi()
+{
+}
+
+void ConsoleUi::drawGame()
+{
+}
+
+int ConsoleUi::readColumn()
+{
+    return 0;
+}
+
+void ConsoleUi::showWinner(TeamEnum team)
+{
+}
+
+void ConsoleUi::showMessage()
+{
 }

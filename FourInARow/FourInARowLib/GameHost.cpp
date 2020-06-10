@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "GameHost.h"
 
-GameHost::GameHost(std::vector<Player> players, std::shared_ptr<Ui> ui)
+GameHost::GameHost(std::vector<std::shared_ptr<Player>> players, std::shared_ptr<Ui> ui)
 {
 }
 

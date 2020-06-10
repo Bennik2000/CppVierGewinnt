@@ -5,14 +5,22 @@
 GameRules::GameRules() {
 }
 
-bool GameRules::isValidMove(int column) {
+bool GameRules::isValidMove(int column)
+{
+    return false;
 }
 
-bool GameRules::placeToken(int column) {
+bool GameRules::placeToken(int column)
+{
+    return false;
 }
 
-TeamEnum GameRules::checkWinner() {
+TeamEnum GameRules::checkWinner()
+{
+    return {};
 }
 
-std::shared_ptr<GameBoard> GameRules::getGameBoard() {
+std::shared_ptr<GameBoard> GameRules::getGameBoard()
+{
+    return {};
 }
