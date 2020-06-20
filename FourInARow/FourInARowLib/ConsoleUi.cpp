@@ -1,8 +1,9 @@
 #include "pch.h"
 
-#include <iostream>
-
 #include "ConsoleUi.h"
+#include "GameBoard.h"
+#include <iostream>
+#include <string>
 
 int ConsoleUi::showMultipleChoice(std::string message, std::vector<std::string> answers) const
 {
@@ -31,8 +32,24 @@ ConsoleUi::~ConsoleUi()
 {
 }
 
-void ConsoleUi::drawGame() const
+void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard) const
 {
+    for (int x = 0; x < gameBoard->getWidth(); x++)
+    {
+        std::cout << "{ " << x << " } ";
+    }
+    std::cout << std::endl;
+
+    for (int y = 0; y < gameBoard->getHeight(); y++)
+    {
+        std::cout << "{ " << y << " } ";
+        for (int x = 0; x < gameBoard->getWidth(); x++)
+        {
+            std::cout << "[ " << tokenToString(gameBoard->getTokenAt(x, y)) << " ] ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 }
 
 int ConsoleUi::readColumn() const
@@ -46,4 +63,17 @@ void ConsoleUi::showWinner(TeamEnum team) const
 
 void ConsoleUi::showMessage() const
 {
+}
+
+std::string ConsoleUi::tokenToString(const TeamEnum &token) const
+{
+    switch (token)
+    {
+    case TeamEnum::None:
+        return " ";
+    case TeamEnum::Blue:
+        return "\x1B[34mO\033[0m";
+    case TeamEnum::Yellow:
+        return "\x1B[33mO\033[0m";
+    }
 }

@@ -2,6 +2,9 @@
 #include "TeamEnum.h"
 #include <string>
 #include <vector>
+#include <memory>
+
+class GameBoard;
 
 /**
  * This interface is an abstraction for the UI of the four in a row game.
@@ -12,7 +15,7 @@ class Ui
   public:
     virtual ~Ui() = default;
 
-    virtual void drawGame() const = 0;
+    virtual void drawGame(std::shared_ptr<GameBoard> gameBoard) const = 0;
     virtual int readColumn() const = 0;
     virtual void showWinner(TeamEnum team) const = 0;
     virtual void showMessage() const = 0;
