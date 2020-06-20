@@ -48,7 +48,8 @@
 + getTokenAt(x: int, y: int) : Enum
 + setTokenAt(x: int, y: int, token: Enum) : void
 + getWidth() : int
-+ getHeight() : int</y:MethodLabel>
++ getHeight() : int
++ isValidCoordinate(x: int, y: int) : bool</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
