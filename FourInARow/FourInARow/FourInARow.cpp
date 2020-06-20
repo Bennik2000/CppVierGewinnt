@@ -47,16 +47,12 @@ int main() {
     bool exit = false;
 
     while (!exit) {
-        std::vector<std::string> choices;
-        choices.push_back("Start game");
-        choices.push_back("Exit game");
-
-        int choice = ui->showMultipleChoice("What would you like to do?", choices);
+        int choice = ui->showMultipleChoice("What would you like to do?", {"Start game", "Exit game"});
 
         if (choice == 1) {
             startGame(ui);
         }
-        else if (choice == 2) {
+        else {
             exit = true;
         }
     }
