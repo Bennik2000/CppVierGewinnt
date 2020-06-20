@@ -88,7 +88,7 @@ bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team) {
     int counter = 0;
     int diagonalX, diagonalY;
 
-    for (int x = 0; x < (gameBoard->getWidth() - 3); x++) {
+    for (int x = 0; x < (gameBoard->getWidth() - REQUIRED_FOR_WINNING); x++) {
         diagonalX = x;
         diagonalY = (gameBoard->getHeight() - 1);
 
@@ -109,7 +109,10 @@ bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team) {
         }
     }
 
-    for (int y = (gameBoard->getHeight() - 2); y > 2; y--) {
+    for (int y = (gameBoard->getHeight() - 2); y >= REQUIRED_FOR_WINNING; y--) { 
+        //This "-2" is a constant value. It does not depent on REQUIRED_FOR_WINNING or on the gameBoard size.
+        //Its function is that the for loop starts one fields above the bottom line, because the bottom line was treated in the (x) for loop above.
+
         diagonalX = 0;
         diagonalY = y;
 
@@ -137,7 +140,7 @@ bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team) {
     int counter = 0;
     int diagonalX, diagonalY;
 
-    for (int x = (gameBoard->getWidth() - 1); x > 2; x--) {
+    for (int x = (gameBoard->getWidth() - 1); x >= REQUIRED_FOR_WINNING; x--) {
         diagonalX = x;
         diagonalY = (gameBoard->getHeight() - 1);
 
@@ -158,7 +161,7 @@ bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team) {
         }
     }
 
-    for (int y = (gameBoard->getHeight() - 2); y > 2; y--) {
+    for (int y = (gameBoard->getHeight() - 2); y >= REQUIRED_FOR_WINNING; y--) { // "-2" --> This is exactly the same point as described above (about line 112)
         diagonalX = gameBoard->getWidth() - 1;
         diagonalY = y;
 
