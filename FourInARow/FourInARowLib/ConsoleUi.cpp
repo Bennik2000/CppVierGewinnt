@@ -4,7 +4,8 @@
 
 #include "ConsoleUi.h"
 
-int ConsoleUi::showMultipleChoice(std::string message, std::vector<std::string> answers) {
+int ConsoleUi::showMultipleChoice(std::string message, std::vector<std::string> answers) const
+{
     int result;
 
     std::cout << message << std::endl;
@@ -30,19 +31,19 @@ ConsoleUi::~ConsoleUi()
 {
 }
 
-void ConsoleUi::drawGame()
+void ConsoleUi::drawGame() const
 {
 }
 
-int ConsoleUi::readColumn()
+int ConsoleUi::readColumn() const
 {
     return 0;
 }
 
-void ConsoleUi::showWinner(TeamEnum team)
+void ConsoleUi::showWinner(TeamEnum team) const
 {
 }
 
-void ConsoleUi::showMessage()
+void ConsoleUi::showMessage() const
 {
 }

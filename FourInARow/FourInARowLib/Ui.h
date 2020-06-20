@@ -12,9 +12,9 @@ class Ui
   public:
     virtual ~Ui() = default;
 
-    virtual void drawGame() = 0;
-    virtual int readColumn() = 0;
-    virtual void showWinner(TeamEnum team) = 0;
-    virtual void showMessage() = 0;
-    virtual int showMultipleChoice(std::string message, std::vector<std::string> answers) = 0;
+    virtual void drawGame() const = 0;
+    virtual int readColumn() const = 0;
+    virtual void showWinner(TeamEnum team) const = 0;
+    virtual void showMessage() const = 0;
+    virtual int showMultipleChoice(std::string message, std::vector<std::string> answers) const = 0;
 };

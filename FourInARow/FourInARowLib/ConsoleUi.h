@@ -4,13 +4,13 @@
 class ConsoleUi : public Ui
 {
   public:
-    int showMultipleChoice(std::string message, std::vector<std::string> answers) override;
+    int showMultipleChoice(std::string message, std::vector<std::string> answers) const override;
 
 
     ~ConsoleUi() override;
 
-    void drawGame() override;
-    int readColumn() override;
-    void showWinner(TeamEnum team) override;
-    void showMessage() override;
+    void drawGame() const override;
+    int readColumn() const override;
+    void showWinner(TeamEnum team) const override;
+    void showMessage() const override;
 };
