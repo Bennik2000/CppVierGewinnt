@@ -10,7 +10,7 @@
 #define NOMINMAX
 #include <windows.h>
 
-int ConsoleUi::showMultipleChoice(std::string message, std::vector<std::string> answers) const
+int ConsoleUi::showMultipleChoice(const std::string &message, const std::vector<std::string> &answers) const
 {
     int result;
 
@@ -80,7 +80,7 @@ int ConsoleUi::readColumn(std::shared_ptr<GameBoard> gameBoard) const
     return column;
 }
 
-void ConsoleUi::showWinner(TeamEnum team) const
+void ConsoleUi::showWinner(const TeamEnum &team) const
 {
     std::string teamString;
     switch (team)
@@ -93,7 +93,7 @@ void ConsoleUi::showWinner(TeamEnum team) const
     std::cout << "Team " << teamString << " has won! Congrats!" << std::endl;
 }
 
-void ConsoleUi::showMessage() const
+void ConsoleUi::showMessage(const std::string &message) const
 {
 }
 
