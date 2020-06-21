@@ -16,7 +16,7 @@ class Ui
     virtual ~Ui() = default;
 
     virtual void drawGame(std::shared_ptr<GameBoard> gameBoard) const = 0;
-    virtual int readColumn() const = 0;
+    virtual int readColumn(std::shared_ptr<GameBoard> gameBoard) const = 0;
     virtual void showWinner(TeamEnum team) const = 0;
     virtual void showMessage() const = 0;
     virtual int showMultipleChoice(std::string message, std::vector<std::string> answers) const = 0;

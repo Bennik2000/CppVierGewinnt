@@ -13,11 +13,11 @@ class ConsoleUi : public Ui
     ~ConsoleUi() override;
 
     void drawGame(std::shared_ptr<GameBoard> gameBoard) const override;
-    int readColumn() const override;
+    int readColumn(std::shared_ptr<GameBoard> gameBoard) const override;
     void showWinner(TeamEnum team) const override;
     void showMessage() const override;
 
   private:
     std::string tokenToString(const TeamEnum &token) const;
-    void clearScreen();
+    void clearScreen() const;
 };

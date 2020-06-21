@@ -41,6 +41,7 @@ ConsoleUi::~ConsoleUi()
 
 void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard) const
 {
+    clearScreen();
     for (int x = 0; x < gameBoard->getWidth(); x++)
     {
         std::cout << "{ " << x << " } ";
@@ -59,9 +60,24 @@ void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard) const
     std::cout << std::endl;
 }
 
-int ConsoleUi::readColumn() const
+int ConsoleUi::readColumn(std::shared_ptr<GameBoard> gameBoard) const
 {
-    return 0;
+    int column;
+
+    std::cout << "Column: ";
+    std::cin >> column;
+
+    while (!(column < gameBoard->getWidth() && column >= 0 && gameBoard->getTokenAt(column, 0) == TeamEnum::None) || std::cin.fail())
+    {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::cout << "Your column is inavlid, please select another one!" << std::endl;
+        std::cout << "Column: ";
+        std::cin >> column;
+    }
+
+    return column;
 }
 
 void ConsoleUi::showWinner(TeamEnum team) const
@@ -85,7 +101,7 @@ std::string ConsoleUi::tokenToString(const TeamEnum &token) const
     }
 }
 
-void ConsoleUi::clearScreen()
+void ConsoleUi::clearScreen() const
 {
     HANDLE hStdOut;
     CONSOLE_SCREEN_BUFFER_INFO csbi;
