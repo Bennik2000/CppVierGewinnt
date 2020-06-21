@@ -82,6 +82,15 @@ int ConsoleUi::readColumn(std::shared_ptr<GameBoard> gameBoard) const
 
 void ConsoleUi::showWinner(TeamEnum team) const
 {
+    std::string teamString;
+    switch (team)
+    {
+    case TeamEnum::Blue:
+        teamString = "Blue";
+    case TeamEnum::Yellow:
+        teamString = "Yellow";
+    }
+    std::cout << "Team " << teamString << " has won! Congrats!" << std::endl;
 }
 
 void ConsoleUi::showMessage() const
