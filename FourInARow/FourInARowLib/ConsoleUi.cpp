@@ -42,6 +42,7 @@ ConsoleUi::~ConsoleUi()
 void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard) const
 {
     clearScreen();
+    std::cout << "      ";
     for (int x = 0; x < gameBoard->getWidth(); x++)
     {
         std::cout << "{ " << x << " } ";
