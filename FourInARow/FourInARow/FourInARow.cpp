@@ -4,33 +4,39 @@
 #include "Ui.h"
 #include <memory>
 
-std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, int player) {
+std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, int player) 
+{
     std::vector<std::string> choices;
     choices.push_back("Human player");
     choices.push_back("Bot player");
 
     std::string message;
 
-    if (player == 0) {
+    if (player == 0)
+    {
         message = "What should be the first player?";
     }
-    else if (player == 1) {
+    else if (player == 1)
+    {
         message = "What should be the second player?";
     }
 
     int choice = ui->showMultipleChoice(message, choices);
 
-    if (choice == 1) {
+    if (choice == 1) 
+    {
         return nullptr; // TODO: Return human player instance
     }
-    if (choice == 1) {
+    if (choice == 1) 
+    {
         return nullptr; // TODO: Return bot player instance
     }
 
     return nullptr;
 }
 
-void startGame(std::shared_ptr<Ui> ui) {
+void startGame(std::shared_ptr<Ui> ui) 
+{
     std::vector<std::shared_ptr<Player>> players;
 
     players.push_back(getPlayerByUserChoice(ui, 0));
@@ -40,7 +46,8 @@ void startGame(std::shared_ptr<Ui> ui) {
     gameHost->startGame();
 }
 
-int main() {
+int main() 
+{
 
     auto ui = std::make_shared<ConsoleUi>();
 
