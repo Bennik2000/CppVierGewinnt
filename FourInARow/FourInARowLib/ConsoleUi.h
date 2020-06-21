@@ -19,4 +19,5 @@ class ConsoleUi : public Ui
 
   private:
     std::string tokenToString(const TeamEnum &token) const;
+    void clearScreen();
 };
