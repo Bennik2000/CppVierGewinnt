@@ -24,7 +24,7 @@ int ConsoleUi::showMultipleChoice(const std::string &message, const std::vector<
     std::cout << "Answer: ";
     std::cin >> result;
 
-    while (result > answers.size() || result < 1 || std::cin.fail())
+    while (std::cin.fail() || result > answers.size() || result < 1)
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -67,7 +67,7 @@ int ConsoleUi::readColumn(std::shared_ptr<GameBoard> gameBoard) const
     std::cout << "Column: ";
     std::cin >> column;
 
-    while (!(column < gameBoard->getWidth() && column >= 0 && gameBoard->getTokenAt(column, 0) == TeamEnum::None) || std::cin.fail())
+    while (std::cin.fail() || !(column < gameBoard->getWidth() && column >= 0 && gameBoard->getTokenAt(column, 0) == TeamEnum::None))
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -95,6 +95,7 @@ void ConsoleUi::showWinner(const TeamEnum &team) const
 
 void ConsoleUi::showMessage(const std::string &message) const
 {
+    std::cout << message << std::endl;
 }
 
 std::string ConsoleUi::tokenToString(const TeamEnum &token) const
