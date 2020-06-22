@@ -3,6 +3,7 @@
 #include "GameRules.h"
 
 GameRules::GameRules()
+        : gameBoard(std::make_shared<GameBoard>(7, 7))
 {
 }
 
@@ -18,7 +19,7 @@ bool GameRules::placeToken(int column)
 
 std::shared_ptr<GameBoard> GameRules::getGameBoard()
 {
-    return {};
+    return gameBoard;
 }
 
 bool GameRules::isValidCoord(int x, int y)
