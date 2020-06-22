@@ -11,7 +11,7 @@
  */
 class GameRules
 {
-public:
+  public:
     GameRules();
 
     bool isValidMove(int column);

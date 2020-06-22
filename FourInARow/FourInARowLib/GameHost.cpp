@@ -2,7 +2,6 @@
 
 #include "GameHost.h"
 #include <memory>
-#include <memory>
 
 GameHost::GameHost(std::vector<std::shared_ptr<Player>> &players, std::shared_ptr<Ui> &ui)
         : players(players)
