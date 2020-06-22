@@ -8,17 +8,19 @@
  */
 class GameBoard
 {
-  public:
-    GameBoard(int height, int width);
+public:
+    GameBoard(int width, int height);
 
-    TeamEnum getTokenAt(int x, int y);
-    void setTokenAt(int x, int y);
+    TeamEnum getTokenAt(int x, int y) const;
+    void setTokenAt(int x, int y, TeamEnum token);
 
-    int getWidth();
-    int getHeight();
+    int getWidth() const;
+    int getHeight() const;
+
+    bool isValidCoordinate(int x, int y) const;
 
   private:
     std::vector<std::vector<TeamEnum>> board;
-    int height;
     int width;
+    int height;
 };
