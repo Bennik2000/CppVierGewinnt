@@ -68,14 +68,12 @@
 + isValidMove(column: int) : bool
 + checkWinner(team: Enum): bool
 + getGameBoard(): GameBoard
-+ placeToken(int column) : bool
++ placeToken(int column, team: Enum) : bool
 
-- calculateLowestEmptyRow(column: int) : int
--isValidCoord(int x, int y): bool
--checkHorizontalWinner(team:Enum): bool
--checkVerticalWinner(team:Enum): bool
--checkLeftToTopDiagonalWinner(team:Enum): bool
--checkRightToTopDiagonalWinner(team:Enum): bool</y:MethodLabel>
+- checkHorizontalWinner(team: Enum): bool
+- checkVerticalWinner(team: Enum): bool
+- checkLeftToTopDiagonalWinner(team: Enum): bool
+- checkRightToTopDiagonalWinner(team: Enum): bool</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
