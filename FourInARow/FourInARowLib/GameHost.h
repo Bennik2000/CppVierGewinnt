@@ -11,7 +11,7 @@
 class GameHost
 {
 
-public:
+  public:
     GameHost(std::vector<std::shared_ptr<Player>> players, std::shared_ptr<Ui> ui);
 
     void startGame();
