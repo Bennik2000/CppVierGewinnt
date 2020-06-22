@@ -1,16 +1,21 @@
 #pragma once
 #include "Ui.h"
+#include <memory>
+
+class GameBoard;
 
 class ConsoleUi : public Ui
 {
   public:
-    int showMultipleChoice(std::string message, std::vector<std::string> answers) override;
-
-
     ~ConsoleUi() override;
 
-    void drawGame() override;
-    int readColumn() override;
-    void showWinner(TeamEnum team) override;
-    void showMessage() override;
+    void drawGame(std::shared_ptr<GameBoard> gameBoard) const override;
+    int readColumn(std::shared_ptr<GameBoard> gameBoard) const override;
+    void showWinner(const TeamEnum &team) const override;
+    void showMessage(const std::string &message) const override;
+    int showMultipleChoice(const std::string &message, const std::vector<std::string> &answers) const override;
+
+  private:
+    std::string tokenToString(const TeamEnum &token) const;
+    void clearScreen() const;
 };
