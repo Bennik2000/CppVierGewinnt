@@ -1,6 +1,6 @@
 #pragma once
 
-enum TeamEnum 
+enum TeamEnum
 {
     None,
     Yellow,
