@@ -2,7 +2,8 @@
 
 #include "GameBoard.h"
 
-GameBoard::GameBoard(int height, int width) : height(height), width(width) {
+GameBoard::GameBoard(int height, int width) : height(height), width(width)
+{
 }
 
 TeamEnum GameBoard::getTokenAt(int x, int y)

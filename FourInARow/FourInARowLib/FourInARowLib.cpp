@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ostream>
 
-void printHelloWorld() {
+void printHelloWorld()
+{
     std::cout << "Hello World" << std::endl;
 }
