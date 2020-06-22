@@ -1,22 +1,31 @@
 #include "pch.h"
 
-#include <iostream>
-
 #include "ConsoleUi.h"
+#include "GameBoard.h"
+#include <iostream>
+#include <string>
 
-int ConsoleUi::showMultipleChoice(std::string message, std::vector<std::string> answers) {
+// Without NOMINMAX, windows.h defines a max() macro
+// which conflicts with std::numeric_limits<std::streamsize>::max().
+#define NOMINMAX
+#include <windows.h>
+
+int ConsoleUi::showMultipleChoice(const std::string &message, const std::vector<std::string> &answers) const
+{
     int result;
 
     std::cout << message << std::endl;
 
-    for (int i = 0; i < answers.size(); i++) {
+    for (int i = 0; i < answers.size(); i++)
+    {
         std::cout << i + 1 << ": " << answers[i] << std::endl;
     }
 
     std::cout << "Answer: ";
     std::cin >> result;
 
-    while (result > answers.size() || result < 1 || std::cin.fail()) {
+    while (std::cin.fail() || result > answers.size() || result < 1)
+    {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "The given answer was invalid! Please enter a new answer: ";
@@ -30,19 +39,112 @@ ConsoleUi::~ConsoleUi()
 {
 }
 
-void ConsoleUi::drawGame()
+void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard) const
 {
+    clearScreen();
+    std::cout << "      ";
+    for (int x = 0; x < gameBoard->getWidth(); x++)
+    {
+        std::cout << "{ " << x << " } ";
+    }
+    std::cout << std::endl;
+
+    for (int y = 0; y < gameBoard->getHeight(); y++)
+    {
+        std::cout << "{ " << y << " } ";
+        for (int x = 0; x < gameBoard->getWidth(); x++)
+        {
+            std::cout << "[ " << tokenToString(gameBoard->getTokenAt(x, y)) << " ] ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
 }
 
-int ConsoleUi::readColumn()
+int ConsoleUi::readColumn(std::shared_ptr<GameBoard> gameBoard) const
 {
-    return 0;
+    int column;
+
+    std::cout << "Column: ";
+    std::cin >> column;
+
+    while (std::cin.fail() || !(column < gameBoard->getWidth() && column >= 0 && gameBoard->getTokenAt(column, 0) == TeamEnum::None))
+    {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        std::cout << "Your column is inavlid, please select another one!" << std::endl;
+        std::cout << "Column: ";
+        std::cin >> column;
+    }
+
+    return column;
 }
 
-void ConsoleUi::showWinner(TeamEnum team)
+void ConsoleUi::showWinner(const TeamEnum &team) const
 {
+    std::string teamString;
+    switch (team)
+    {
+    case TeamEnum::Blue:
+        teamString = "Blue";
+    case TeamEnum::Yellow:
+        teamString = "Yellow";
+    }
+    std::cout << "Team " << teamString << " has won! Congrats!" << std::endl;
 }
 
-void ConsoleUi::showMessage()
+void ConsoleUi::showMessage(const std::string &message) const
 {
+    std::cout << message << std::endl;
+}
+
+std::string ConsoleUi::tokenToString(const TeamEnum &token) const
+{
+    switch (token)
+    {
+    case TeamEnum::None:
+        return " ";
+    case TeamEnum::Blue:
+        return "\x1B[34mO\033[0m";
+    case TeamEnum::Yellow:
+        return "\x1B[33mO\033[0m";
+    }
+}
+
+void ConsoleUi::clearScreen() const
+{
+    HANDLE hStdOut;
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    DWORD count;
+    DWORD cellCount;
+    COORD homeCoords = { 0, 0 };
+
+    hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hStdOut == INVALID_HANDLE_VALUE)
+    {
+        return;
+    }
+
+    // Get the number of cells in the current buffer
+    if (!GetConsoleScreenBufferInfo(hStdOut, &csbi))
+    {
+        return;
+    }
+    cellCount = csbi.dwSize.X * csbi.dwSize.Y;
+
+    // Fill the entire buffer with spaces
+    if (!FillConsoleOutputCharacter(hStdOut, (TCHAR)' ', cellCount, homeCoords, &count))
+    {
+        return;
+    }
+
+    // Fill the entire buffer with the current colors and attributes
+    if (!FillConsoleOutputAttribute(hStdOut, csbi.wAttributes, cellCount, homeCoords, &count))
+    {
+        return;
+    }
+
+    // Move the cursor home
+    SetConsoleCursorPosition(hStdOut, homeCoords);
 }
