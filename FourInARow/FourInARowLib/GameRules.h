@@ -1,7 +1,9 @@
 #pragma once
 #include "GameBoard.h"
 #include <memory>
-#define REQUIRED_FOR_WINNING 3 // All matching pairs (not Elements!) are counted -->  4 in a row --> 3 || 5 in a row --> 4 ||...
+
+// All matching pairs (not Elements!) are counted -->  4 in a row --> 3 || 5 in a row --> 4 ||...
+#define REQUIRED_FOR_WINNING 3
 
 /**
  * This class has methods to validate and make moves, evaluate a winner. It also

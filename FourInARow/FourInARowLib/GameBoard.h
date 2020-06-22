@@ -8,7 +8,7 @@
  */
 class GameBoard
 {
-public:
+  public:
     GameBoard(int width, int height);
 
     TeamEnum getTokenAt(int x, int y) const;

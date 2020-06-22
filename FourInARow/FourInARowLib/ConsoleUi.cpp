@@ -10,7 +10,8 @@
 #define NOMINMAX
 #include <windows.h>
 
-int ConsoleUi::showMultipleChoice(const std::string &message, const std::vector<std::string> &answers) const
+int ConsoleUi::showMultipleChoice(const std::string &message,
+                                  const std::vector<std::string> &answers) const
 {
     int result;
 
@@ -68,7 +69,9 @@ int ConsoleUi::readColumn(std::shared_ptr<GameBoard> gameBoard) const
     std::cout << "Column: ";
     std::cin >> column;
 
-    while (std::cin.fail() || !(column < gameBoard->getWidth() && column >= 0 && gameBoard->getTokenAt(column, 0) == TeamEnum::None))
+    while (std::cin.fail() ||
+           !(column < gameBoard->getWidth() && column >= 0 &&
+             gameBoard->getTokenAt(column, 0) == TeamEnum::None))
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -118,7 +121,7 @@ void ConsoleUi::clearScreen() const
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     DWORD count;
     DWORD cellCount;
-    COORD homeCoords = { 0, 0 };
+    COORD homeCoords = {0, 0};
 
     hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
     if (hStdOut == INVALID_HANDLE_VALUE)
