@@ -4,60 +4,36 @@
 
 using std::vector;
 
-GameBoard::GameBoard(int height, int width)
-    : height(height),
-      width(width)
-{
-    initBoardVector();
+GameBoard::GameBoard(int width, int height)
+        : width(width), height(height), board(width, vector<TeamEnum>(height, TeamEnum::None)) {
 }
 
-TeamEnum GameBoard::getTokenAt(int x, int y)
-{
-    if (isValidCoordinate(x, y))
-        return board[y][x];
-
-    return TeamEnum::None;
+TeamEnum GameBoard::getTokenAt(int x, int y) const {
+    if (isValidCoordinate(x, y)) {
+        return board[x][y];
+    }
+    else {
+        return TeamEnum::None;
+    }
 }
 
-void GameBoard::setTokenAt(int x, int y, TeamEnum token)
-{
-    if (isValidCoordinate(x, y))
-        board[y][x] = token;
+void GameBoard::setTokenAt(int x, int y, TeamEnum token) {
+    if (isValidCoordinate(x, y)) {
+        board[x][y] = token;
+    }
 }
 
-int GameBoard::getWidth()
-{
+int GameBoard::getWidth() const {
     return width;
 }
 
-int GameBoard::getHeight()
-{
+int GameBoard::getHeight() const {
     return height;
 }
 
-bool GameBoard::isValidCoordinate(int x, int y)
-{
+bool GameBoard::isValidCoordinate(int x, int y) const {
     bool xValid = x >= 0 && x < width;
     bool yValid = y >= 0 && y < height;
 
     return xValid && yValid;
-}
-
-void GameBoard::initBoardVector()
-{
-    board.clear();
-    board.reserve(height);
-
-    for (int i = 0; i < height; i++)
-    {
-        vector<TeamEnum> row;
-        row.reserve(width);
-
-        for (int j = 0; j < width; j++)
-        {
-            row.push_back(TeamEnum::None);
-        }
-
-        board.push_back(row);
-    }
 }
