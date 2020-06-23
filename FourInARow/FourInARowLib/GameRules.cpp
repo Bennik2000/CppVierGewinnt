@@ -8,14 +8,7 @@ GameRules::GameRules()
 
 bool GameRules::isValidMove(int column) const 
 {
-    if (column >= 0 && column < gameBoard->getWidth() && gameBoard->getTokenAt(column, 0) == TeamEnum::None)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return column >= 0 && column < gameBoard->getWidth() && gameBoard->getTokenAt(column, 0) == TeamEnum::None;
 }
 
 bool GameRules::placeToken(int column, TeamEnum team)
