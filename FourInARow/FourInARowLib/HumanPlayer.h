@@ -9,4 +9,7 @@ class HumanPlayer : public Player
     ~HumanPlayer() override;
 
     void play(std::shared_ptr<GameRules> gameRules) override;
+
+  private:
+    std::shared_ptr<Ui> ui;
 };

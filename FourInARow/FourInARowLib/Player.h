@@ -13,7 +13,7 @@ class GameRules;
 class Player
 {
   public:
-    Player(const std::string &name, const TeamEnum &team, std::shared_ptr<Ui> ui);
+    Player(const std::string &name, const TeamEnum &team);
     virtual ~Player() = default;
 
     virtual void play(std::shared_ptr<GameRules> gameRules) = 0;
@@ -22,5 +22,4 @@ class Player
   protected:
     std::string name;
     TeamEnum team;
-    std::shared_ptr<Ui> ui;
 };

@@ -4,7 +4,8 @@
 #include "Ui.h"
 
 HumanPlayer::HumanPlayer(const std::string &name, const TeamEnum &team, std::shared_ptr<Ui> ui)
-        : Player(name, team, ui)
+        : Player(name, team)
+        , ui(ui)
 {
 }
 
