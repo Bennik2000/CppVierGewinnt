@@ -30,7 +30,7 @@ void GameHost::startGame()
 
         if (didPlayerWin)
         {
-            ui->showWinner(currentPlayer->getToken());
+            ui->showWinner(currentPlayerToken);
             break;
         }
 
