@@ -17,6 +17,7 @@ class Player
     virtual ~Player() = default;
 
     virtual void play(std::shared_ptr<GameRules> gameRules) = 0;
+    TeamEnum getToken() const;
 
   protected:
     std::string name;

@@ -12,7 +12,7 @@ class GameHost
 {
 
   public:
-    GameHost(std::vector<std::shared_ptr<Player>> players, std::shared_ptr<Ui> ui);
+    GameHost(std::vector<std::shared_ptr<Player>> &players, std::shared_ptr<Ui> &ui);
 
     void startGame();
 
@@ -20,4 +20,6 @@ class GameHost
     std::vector<std::shared_ptr<Player>> players;
     std::shared_ptr<GameRules> gameRules;
     std::shared_ptr<Ui> ui;
+
+    void initializeNewGame();
 };

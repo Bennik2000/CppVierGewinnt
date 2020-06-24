@@ -3,6 +3,7 @@
 #include "GameRules.h"
 
 GameRules::GameRules()
+        : gameBoard(std::make_shared<GameBoard>(7, 7))
 {
 }
 

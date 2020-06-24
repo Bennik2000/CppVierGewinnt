@@ -8,3 +8,8 @@ Player::Player(const std::string &name, const TeamEnum &team, std::shared_ptr<Ui
         , ui(ui)
 {
 }
+
+TeamEnum Player::getToken() const
+{
+    return team;
+}
