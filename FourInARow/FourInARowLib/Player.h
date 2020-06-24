@@ -1,19 +1,22 @@
 #pragma once
-#include "GameRules.h"
 #include "TeamEnum.h"
 #include <string>
+#include <memory>
+
+class Ui;
+class GameRules;
 
 /**
  * This class is an abstraction for a player. Override this class to implement
- * bots
+ * a human player or bots
  */
 class Player
 {
   public:
-    Player(std::string name, TeamEnum team);
+    Player(const std::string &name, const TeamEnum &team);
     virtual ~Player() = default;
 
-    virtual void play(std::shared_ptr<GameRules> rules) = 0;
+    virtual void play(std::shared_ptr<GameRules> gameRules) = 0;
     TeamEnum getToken() const;
 
   protected:
