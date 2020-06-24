@@ -45,6 +45,9 @@
     <ClInclude Include="ConsoleUi.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="RandomBot.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="HumanPlayer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
@@ -69,6 +72,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="ConsoleUi.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomBot.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="HumanPlayer.cpp">
