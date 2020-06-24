@@ -7,31 +7,36 @@ GameRules::GameRules()
 {
 }
 
-bool GameRules::isValidMove(int column)
+bool GameRules::isValidMove(int column) const 
 {
-    return false;
+    return column >= 0 && column < gameBoard->getWidth() && gameBoard->getTokenAt(column, 0) == TeamEnum::None;
 }
 
-bool GameRules::placeToken(int column)
+bool GameRules::placeToken(int column, TeamEnum team)
 {
-    return false;
+    if (isValidMove(column))
+    {
+        for (int y = (gameBoard->getHeight() - 1); y >= 0; y--)
+        {
+            if (gameBoard->getTokenAt(column, y) == TeamEnum::None)
+            {
+                gameBoard->setTokenAt(column, y, team);
+                return true;
+            }
+        }
+    }
+    else
+    {
+        return false;
+    }
 }
 
-std::shared_ptr<GameBoard> GameRules::getGameBoard()
+std::shared_ptr<GameBoard> GameRules::getGameBoard() const
 {
     return gameBoard;
 }
 
-bool GameRules::isValidCoord(int x, int y)
-{
-    if (x >= 0 && y >= 0 && x < gameBoard->getWidth() && y < gameBoard->getHeight())
-    {
-        return true;
-    }
-    return false;
-}
-
-bool GameRules::checkWinner(TeamEnum team)
+bool GameRules::checkWinner(TeamEnum team) const
 {
     if (checkHorizontalWinner(team))
     {
@@ -53,7 +58,7 @@ bool GameRules::checkWinner(TeamEnum team)
 
     return false;
 }
-bool GameRules::checkHorizontalWinner(TeamEnum team)
+bool GameRules::checkHorizontalWinner(TeamEnum team) const
 {
     int counter = 0;
 
@@ -83,7 +88,7 @@ bool GameRules::checkHorizontalWinner(TeamEnum team)
     return false;
 }
 
-bool GameRules::checkVerticalWinner(TeamEnum team)
+bool GameRules::checkVerticalWinner(TeamEnum team) const
 {
     int counter = 0;
 
@@ -113,7 +118,7 @@ bool GameRules::checkVerticalWinner(TeamEnum team)
     return false;
 }
 
-bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team)
+bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team) const
 {
     int counter = 0;
     int diagonalX, diagonalY;
@@ -122,8 +127,8 @@ bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team)
     {
         diagonalX = x;
         diagonalY = (gameBoard->getHeight() - 1);
-
-        while (isValidCoord((diagonalX + 1), (diagonalY - 1)))
+      
+        while (gameBoard->isValidCoordinate((diagonalX + 1), (diagonalY - 1))) 
         {
             if (gameBoard->getTokenAt(diagonalX, diagonalY) ==
                     gameBoard->getTokenAt((diagonalX + 1), (diagonalY - 1)) &&
@@ -155,7 +160,7 @@ bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team)
         diagonalX = 0;
         diagonalY = y;
 
-        while (isValidCoord((diagonalX + 1), (diagonalY - 1)))
+        while (gameBoard->isValidCoordinate((diagonalX + 1), (diagonalY - 1)))
         {
             if (gameBoard->getTokenAt(diagonalX, diagonalY) ==
                     gameBoard->getTokenAt((diagonalX + 1), (diagonalY - 1)) &&
@@ -181,7 +186,7 @@ bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team)
     return false;
 }
 
-bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team)
+bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team) const
 {
     int counter = 0;
     int diagonalX, diagonalY;
@@ -191,7 +196,7 @@ bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team)
         diagonalX = x;
         diagonalY = (gameBoard->getHeight() - 1);
 
-        while (isValidCoord((diagonalX - 1), (diagonalY - 1)))
+        while (gameBoard->isValidCoordinate((diagonalX - 1), (diagonalY - 1))) 
         {
             if (gameBoard->getTokenAt(diagonalX, diagonalY) ==
                     gameBoard->getTokenAt((diagonalX - 1), (diagonalY - 1)) &&
@@ -221,7 +226,7 @@ bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team)
         diagonalX = gameBoard->getWidth() - 1;
         diagonalY = y;
 
-        while (isValidCoord((diagonalX - 1), (diagonalY - 1)))
+        while (gameBoard->isValidCoordinate((diagonalX - 1), (diagonalY - 1)))
         {
             if (gameBoard->getTokenAt(diagonalX, diagonalY) ==
                     gameBoard->getTokenAt((diagonalX - 1), (diagonalY - 1)) &&
