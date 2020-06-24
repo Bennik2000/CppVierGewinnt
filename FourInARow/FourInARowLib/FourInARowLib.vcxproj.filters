@@ -48,6 +48,9 @@
     <ClInclude Include="RandomBot.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="HumanPlayer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FourInARowLib.cpp">
@@ -72,6 +75,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="RandomBot.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="HumanPlayer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

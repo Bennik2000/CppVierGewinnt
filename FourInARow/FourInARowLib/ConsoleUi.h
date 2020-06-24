@@ -3,6 +3,7 @@
 #include <memory>
 
 class GameBoard;
+class GameRules;
 
 class ConsoleUi : public Ui
 {
@@ -10,7 +11,7 @@ class ConsoleUi : public Ui
     ~ConsoleUi() override;
 
     void drawGame(std::shared_ptr<GameBoard> gameBoard) const override;
-    int readColumn(std::shared_ptr<GameBoard> gameBoard) const override;
+    int readValidColumn(std::shared_ptr<GameRules> gameRules) const override;
     void showWinner(const TeamEnum &team) const override;
     void showMessage(const std::string &message) const override;
     int showMultipleChoice(const std::string &message,

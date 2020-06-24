@@ -2,7 +2,7 @@
 
 #include "Player.h"
 
-Player::Player(std::string name, TeamEnum team)
+Player::Player(const std::string &name, const TeamEnum &team)
         : name(name)
         , team(team)
 {

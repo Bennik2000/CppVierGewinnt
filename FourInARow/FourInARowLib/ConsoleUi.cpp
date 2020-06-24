@@ -2,6 +2,7 @@
 
 #include "ConsoleUi.h"
 #include "GameBoard.h"
+#include "GameRules.h"
 #include <iostream>
 #include <string>
 
@@ -62,16 +63,14 @@ void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard) const
     std::cout << std::endl;
 }
 
-int ConsoleUi::readColumn(std::shared_ptr<GameBoard> gameBoard) const
+int ConsoleUi::readValidColumn(std::shared_ptr<GameRules> gameRules) const
 {
     int column;
 
     std::cout << "Column: ";
     std::cin >> column;
 
-    while (std::cin.fail() ||
-           !(column < gameBoard->getWidth() && column >= 0 &&
-             gameBoard->getTokenAt(column, 0) == TeamEnum::None))
+    while (std::cin.fail() || !gameRules->isValidMove(column))
     {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
