@@ -7,3 +7,8 @@ Player::Player(std::string name, TeamEnum team)
         , team(team)
 {
 }
+
+TeamEnum Player::getToken() const
+{
+    return team;
+}
