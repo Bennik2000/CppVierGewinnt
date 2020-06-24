@@ -2,14 +2,11 @@
 #include "GameHost.h"
 #include "Player.h"
 #include "Ui.h"
+#include "HumanPlayer.h"
 #include <memory>
 
 std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, int player)
 {
-    std::vector<std::string> choices;
-    choices.push_back("Human player");
-    choices.push_back("Bot player");
-
     std::string message;
 
     if (player == 0)
@@ -21,18 +18,16 @@ std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, int player
         message = "What should be the second player?";
     }
 
-    int choice = ui->showMultipleChoice(message, choices);
+    int choice = ui->showMultipleChoice(message, {"Human player", "Bot player"});
 
     if (choice == 1)
     {
-        return nullptr; // TODO: Return human player instance
+        return std::make_shared<HumanPlayer>(std::string("Player ") + std::to_string(player), player, ui);
     }
-    if (choice == 1)
+    else
     {
         return nullptr; // TODO: Return bot player instance
     }
-
-    return nullptr;
 }
 
 void startGame(std::shared_ptr<Ui> ui)
