@@ -91,8 +91,10 @@ void ConsoleUi::showWinner(const TeamEnum &team) const
     {
     case TeamEnum::Blue:
         teamString = "Blue";
+        break;
     case TeamEnum::Yellow:
         teamString = "Yellow";
+        break;
     }
     std::cout << "Team " << teamString << " has won! Congrats!" << std::endl;
 }
