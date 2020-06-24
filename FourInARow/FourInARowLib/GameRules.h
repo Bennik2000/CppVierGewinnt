@@ -11,22 +11,21 @@
  */
 class GameRules
 {
+public : 
     GameRules();
 
-    bool isValidMove(int column);
-    bool placeToken(int column);
+    bool isValidMove(int column) const;
+    bool placeToken(int column, TeamEnum team);
 
-    bool checkWinner(TeamEnum team);
+    bool checkWinner(TeamEnum team) const;
 
-    std::shared_ptr<GameBoard> getGameBoard();
+    std::shared_ptr<GameBoard> getGameBoard() const;
 
   private:
-    bool isValidCoord(int x, int y);
-
-    bool checkHorizontalWinner(TeamEnum team);
-    bool checkVerticalWinner(TeamEnum team);
-    bool checkLeftToTopDiagonalWinner(TeamEnum team);
-    bool checkRightToTopDiagonalWinner(TeamEnum team);
+    bool checkHorizontalWinner(TeamEnum team) const;
+    bool checkVerticalWinner(TeamEnum team) const;
+    bool checkLeftToTopDiagonalWinner(TeamEnum team) const;
+    bool checkRightToTopDiagonalWinner(TeamEnum team) const;
 
     std::shared_ptr<GameBoard> gameBoard;
 };
