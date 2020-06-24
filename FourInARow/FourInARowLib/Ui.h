@@ -5,6 +5,7 @@
 #include <vector>
 
 class GameBoard;
+class GameRules;
 
 /**
  * This interface is an abstraction for the UI of the four in a row game.

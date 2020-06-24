@@ -8,8 +8,12 @@ HumanPlayer::HumanPlayer(const std::string &name, const TeamEnum &team, std::sha
 {
 }
 
+HumanPlayer::~HumanPlayer()
+{
+}
+
 void HumanPlayer::play(std::shared_ptr<GameRules> gameRules)
 {
     int column = ui->readValidColumn(gameRules);
-    gameRules->placeToken(column);
+    gameRules->placeToken(column, team);
 }
