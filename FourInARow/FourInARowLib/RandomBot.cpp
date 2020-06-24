@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "RandomBot.h"
+#include "GameRules.h"
 #include <chrono>
 
 RandomBot::RandomBot(std::string name, TeamEnum team)
