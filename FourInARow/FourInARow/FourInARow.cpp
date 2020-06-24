@@ -1,10 +1,11 @@
 #include "ConsoleUi.h"
 #include "GameHost.h"
-#include "Player.h"
-#include "Ui.h"
 #include "HumanPlayer.h"
+#include "Player.h"
 #include "TeamEnum.h"
+#include "Ui.h"
 #include <memory>
+#include "RandomBot.h"
 
 std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum team)
 {
@@ -19,21 +20,21 @@ std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum t
         message = "What should be the second player?";
     }
 
-    int choice = ui->showMultipleChoice(message, {"Human player", "Horizontal bot", "Vertical bot"});
+    int choice =
+        ui->showMultipleChoice(message, {"Human player", "Random bot"});
 
     if (choice == 1)
     {
         return std::make_shared<HumanPlayer>(
             std::string("Player ") + std::to_string(team), team, ui);
     }
-    else if (choice == 2) 
+
+    if (choice == 2)
     {
-        return nullptr; // TODO: Return horizontal bot player instance
+        return std::make_shared<RandomBot>("Random bot", team);
     }
-    else
-    {
-        return nullptr; // TODO: Return vertical bot player instance
-    }
+
+    return nullptr;
 }
 
 void startGame(std::shared_ptr<Ui> ui)
