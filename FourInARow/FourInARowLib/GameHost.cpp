@@ -13,7 +13,7 @@ void GameHost::startGame()
 {
     initializeNewGame();
 
-    ui->drawGame(gameRules->getGameBoard());
+    ui->drawGame(gameRules->getGameBoard(), players[0]->getToken());
 
     int currentPlayerIndex = 0;
 
@@ -24,7 +24,7 @@ void GameHost::startGame()
 
         currentPlayer->play(gameRules);
 
-        ui->drawGame(gameRules->getGameBoard());
+        ui->drawGame(gameRules->getGameBoard(), currentPlayerToken);
 
         const bool didPlayerWin = gameRules->checkWinner(currentPlayerToken);
 
