@@ -6,6 +6,7 @@
 #include "Ui.h"
 #include <memory>
 #include "RandomBot.h"
+#include "LowestLineBot.h"
 
 std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum team)
 {
@@ -21,7 +22,7 @@ std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum t
     }
 
     int choice =
-        ui->showMultipleChoice(message, {"Human player", "Random bot"});
+        ui->showMultipleChoice(message, {"Human player", "Random bot", "Lowest line bot"});
 
     if (choice == 1)
     {
@@ -32,6 +33,11 @@ std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum t
     if (choice == 2)
     {
         return std::make_shared<RandomBot>("Random bot", team);
+    }
+
+    if (choice == 3)
+    {
+        return std::make_shared<LowestLineBot>("Lowest line bot", team);
     }
 
     return nullptr;

@@ -13,7 +13,7 @@ bool GameRules::isValidMove(int column) const
         gameBoard->getTokenAt(column, 0) == TeamEnum::None;
 }
 
-bool GameRules::placeToken(int column, TeamEnum team) 
+bool GameRules::placeToken(int column, TeamEnum team)
 {
     if (isValidMove(column))
     {
