@@ -2,7 +2,7 @@
 
 #include "GameRules.h"
 #include "LowestLineBot.h"
-#include "pch.h"
+
 
 LowestLineBot::LowestLineBot(std::string name, TeamEnum team)
         : Player(name, team)
