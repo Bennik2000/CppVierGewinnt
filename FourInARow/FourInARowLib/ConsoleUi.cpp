@@ -37,13 +37,38 @@ int ConsoleUi::showMultipleChoice(const std::string &message,
     return result;
 }
 
+void ConsoleUi::showCurrentTeam(const TeamEnum &team) const
+{
+    std::cout << "Current team: Team ";
+
+    std::string teamString;
+    switch (team)
+    {
+    case TeamEnum::None:
+        teamString = "None";
+        break;
+    case TeamEnum::Blue:
+        teamString = colorizeStringByTeam("Blue", team);
+        break;
+    case TeamEnum::Yellow:
+        teamString = colorizeStringByTeam("Yellow", team);
+        break;
+    }
+
+    std::cout << teamString << std::endl;
+}
+
 ConsoleUi::~ConsoleUi()
 {
 }
 
-void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard) const
+void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard, const TeamEnum &currentTeam) const
 {
     clearScreen();
+
+    showCurrentTeam(currentTeam);
+    std::cout << std::endl;
+
     std::cout << "      ";
     for (int x = 0; x < gameBoard->getWidth(); x++)
     {
@@ -105,14 +130,19 @@ void ConsoleUi::showMessage(const std::string &message) const
 
 std::string ConsoleUi::tokenToString(const TeamEnum &token) const
 {
-    switch (token)
+    return token ? colorizeStringByTeam("O", token) : " ";
+}
+
+std::string ConsoleUi::colorizeStringByTeam(const std::string &string, const TeamEnum &team) const
+{
+    switch (team)
     {
     case TeamEnum::None:
-        return " ";
+        return string;
     case TeamEnum::Blue:
-        return "\x1B[94mO\033[0m";
+        return std::string("\x1B[94m") + string + "\033[0m"; 
     case TeamEnum::Yellow:
-        return "\x1B[33mO\033[0m";
+        return std::string("\x1B[33m") + string + "\033[0m";
     }
 }
 

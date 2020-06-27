@@ -10,7 +10,7 @@ class ConsoleUi : public Ui
   public:
     ~ConsoleUi() override;
 
-    void drawGame(std::shared_ptr<GameBoard> gameBoard) const override;
+    void drawGame(std::shared_ptr<GameBoard> gameBoard, const TeamEnum &currentTeam) const override;
     int readValidColumn(std::shared_ptr<GameRules> gameRules) const override;
     void showWinner(const TeamEnum &team) const override;
     void showMessage(const std::string &message) const override;
@@ -19,5 +19,7 @@ class ConsoleUi : public Ui
 
   private:
     std::string tokenToString(const TeamEnum &token) const;
+    std::string colorizeStringByTeam(const std::string &string, const TeamEnum &team) const;
+    void showCurrentTeam(const TeamEnum &team) const;
     void clearScreen() const;
 };
