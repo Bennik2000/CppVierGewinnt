@@ -110,7 +110,7 @@ std::string ConsoleUi::tokenToString(const TeamEnum &token) const
     case TeamEnum::None:
         return " ";
     case TeamEnum::Blue:
-        return "\x1B[34mO\033[0m";
+        return "\x1B[94mO\033[0m";
     case TeamEnum::Yellow:
         return "\x1B[33mO\033[0m";
     }
