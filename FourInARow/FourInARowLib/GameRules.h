@@ -2,7 +2,7 @@
 #include "GameBoard.h"
 #include <memory>
 
-// All matching pairs (not Elements!) are counted -->  4 in a row --> 3 || 5 in a row --> 4 ||...
+// All matching pairs (not elements!) are counted -->  4 in a row --> 3 || 5 in a row --> 4 ||...
 #define REQUIRED_FOR_WINNING 3
 
 /**
