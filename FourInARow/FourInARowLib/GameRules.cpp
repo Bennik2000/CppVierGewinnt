@@ -7,12 +7,13 @@ GameRules::GameRules()
 {
 }
 
-bool GameRules::isValidMove(int column) const 
+bool GameRules::isValidMove(int column) const
 {
-    return column >= 0 && column < gameBoard->getWidth() && gameBoard->getTokenAt(column, 0) == TeamEnum::None;
+    return column >= 0 && column < gameBoard->getWidth() &&
+        gameBoard->getTokenAt(column, 0) == TeamEnum::None;
 }
 
-bool GameRules::placeToken(int column, TeamEnum team)
+bool GameRules::placeToken(int column, TeamEnum team) 
 {
     if (isValidMove(column))
     {
@@ -25,10 +26,8 @@ bool GameRules::placeToken(int column, TeamEnum team)
             }
         }
     }
-    else
-    {
-        return false;
-    }
+
+    return false;
 }
 
 std::shared_ptr<GameBoard> GameRules::getGameBoard() const
@@ -127,8 +126,8 @@ bool GameRules::checkLeftToTopDiagonalWinner(TeamEnum team) const
     {
         diagonalX = x;
         diagonalY = (gameBoard->getHeight() - 1);
-      
-        while (gameBoard->isValidCoordinate((diagonalX + 1), (diagonalY - 1))) 
+
+        while (gameBoard->isValidCoordinate((diagonalX + 1), (diagonalY - 1)))
         {
             if (gameBoard->getTokenAt(diagonalX, diagonalY) ==
                     gameBoard->getTokenAt((diagonalX + 1), (diagonalY - 1)) &&
@@ -196,7 +195,7 @@ bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team) const
         diagonalX = x;
         diagonalY = (gameBoard->getHeight() - 1);
 
-        while (gameBoard->isValidCoordinate((diagonalX - 1), (diagonalY - 1))) 
+        while (gameBoard->isValidCoordinate((diagonalX - 1), (diagonalY - 1)))
         {
             if (gameBoard->getTokenAt(diagonalX, diagonalY) ==
                     gameBoard->getTokenAt((diagonalX - 1), (diagonalY - 1)) &&
@@ -221,7 +220,7 @@ bool GameRules::checkRightToTopDiagonalWinner(TeamEnum team) const
 
     for (int y = (gameBoard->getHeight() - 2); y >= REQUIRED_FOR_WINNING; y--)
     {
-        // "-2" --> This is exactly the same point as described above (about line 148).
+        // "-2" --> This is exactly the same point as described above (about line 155).
 
         diagonalX = gameBoard->getWidth() - 1;
         diagonalY = y;
