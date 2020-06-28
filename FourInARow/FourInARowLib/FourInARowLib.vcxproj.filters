@@ -52,6 +52,8 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="LowestLineBot.h">
+    <ClInclude Include="LeftColumnBot.h">
+
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -84,6 +86,8 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="LowestLineBot.cpp">
+    <ClCompile Include="LeftColumnBot.cpp">
+
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
