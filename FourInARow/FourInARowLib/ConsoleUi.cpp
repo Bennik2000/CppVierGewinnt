@@ -72,7 +72,7 @@ void ConsoleUi::drawGame(std::shared_ptr<GameBoard> gameBoard, const TeamEnum &c
     std::cout << "      ";
     for (int x = 0; x < gameBoard->getWidth(); x++)
     {
-        std::cout << "{ " << x << " } ";
+        std::cout << "{ " << x + 1 << " } ";
     }
     std::cout << std::endl;
 
@@ -94,6 +94,8 @@ int ConsoleUi::readValidColumn(std::shared_ptr<GameRules> gameRules) const
 
     std::cout << "Column: ";
     std::cin >> column;
+
+    column--;
 
     while (std::cin.fail() || !gameRules->isValidMove(column))
     {

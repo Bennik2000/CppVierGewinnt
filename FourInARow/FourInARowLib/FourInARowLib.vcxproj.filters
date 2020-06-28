@@ -51,6 +51,11 @@
     <ClInclude Include="HumanPlayer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="LowestLineBot.h">
+    <ClInclude Include="LeftColumnBot.h">
+
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FourInARowLib.cpp">
@@ -78,6 +83,11 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="HumanPlayer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="LowestLineBot.cpp">
+    <ClCompile Include="LeftColumnBot.cpp">
+
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
