@@ -13,18 +13,19 @@ void GameHost::startGame()
 {
     initializeNewGame();
 
-    ui->drawGame(gameRules->getGameBoard(), players[0]->getToken());
-
     int currentPlayerIndex = 0;
 
+    ui->drawGame(gameRules->getGameBoard(), players[currentPlayerIndex]->getToken());
+    
     while (true)
     {
         const auto currentPlayer = players[currentPlayerIndex];
         const auto currentPlayerToken = currentPlayer->getToken();
+        const auto nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
 
         currentPlayer->play(gameRules);
 
-        ui->drawGame(gameRules->getGameBoard(), currentPlayerToken);
+        ui->drawGame(gameRules->getGameBoard(), players[nextPlayerIndex]->getToken());
 
         const bool didPlayerWin = gameRules->checkWinner(currentPlayerToken);
 
@@ -34,7 +35,7 @@ void GameHost::startGame()
             break;
         }
 
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.size();
+        currentPlayerIndex = nextPlayerIndex;
     }
 }
 

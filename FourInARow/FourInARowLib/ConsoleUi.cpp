@@ -130,7 +130,7 @@ void ConsoleUi::showMessage(const std::string &message) const
 
 std::string ConsoleUi::tokenToString(const TeamEnum &token) const
 {
-    return token ? colorizeStringByTeam("O", token) : " ";
+    return token != TeamEnum::None ? colorizeStringByTeam("O", token) : " ";
 }
 
 std::string ConsoleUi::colorizeStringByTeam(const std::string &string, const TeamEnum &team) const
@@ -144,6 +144,7 @@ std::string ConsoleUi::colorizeStringByTeam(const std::string &string, const Tea
     case TeamEnum::Yellow:
         return std::string("\x1B[33m") + string + "\033[0m";
     }
+    return std::string();
 }
 
 void ConsoleUi::clearScreen() const
