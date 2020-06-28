@@ -1,11 +1,12 @@
 #include "ConsoleUi.h"
 #include "GameHost.h"
 #include "HumanPlayer.h"
+#include "LeftColumnBot.h"
 #include "Player.h"
+#include "RandomBot.h"
 #include "TeamEnum.h"
 #include "Ui.h"
 #include <memory>
-#include "RandomBot.h"
 
 std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum team)
 {
@@ -20,8 +21,7 @@ std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum t
         message = "What should be the second player?";
     }
 
-    int choice =
-        ui->showMultipleChoice(message, {"Human player", "Random bot"});
+    int choice = ui->showMultipleChoice(message, {"Human player", "Random bot", "Left column bot"});
 
     if (choice == 1)
     {
@@ -32,6 +32,11 @@ std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum t
     if (choice == 2)
     {
         return std::make_shared<RandomBot>("Random bot", team);
+    }
+
+    if (choice == 3)
+    {
+        return std::make_shared<LeftColumnBot>("Left column bot", team);
     }
 
     return nullptr;
