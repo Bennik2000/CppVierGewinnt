@@ -41,6 +41,21 @@ int GameBoard::getHeight() const
     return height;
 }
 
+int GameBoard::getSlotDepth(int column) const
+{
+    int depth = 0;
+
+    for (int y = 0; y < height; y++)
+    {
+        if (board[column][y] != TeamEnum::None)
+        {
+            depth++;
+        }
+    }
+    
+    return depth;
+}
+
 bool GameBoard::isValidCoordinate(int x, int y) const
 {
     bool xValid = x >= 0 && x < width;

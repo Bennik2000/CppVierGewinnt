@@ -13,23 +13,15 @@ void LowestLineBot::play(std::shared_ptr<GameRules> rules)
 {
     int move = 0;
     int lowestValue = rules->getGameBoard()->getHeight();
-    int count;
+    int slotDepth;
 
     for (int x = 0; x < rules->getGameBoard()->getWidth(); x++)
     {
-        count = 0;
+        slotDepth = rules->getGameBoard()->getSlotDepth(x);
 
-        for (int y = 0; y < rules->getGameBoard()->getHeight(); y++)
+        if (slotDepth < lowestValue)
         {
-            if (rules->getGameBoard()->getTokenAt(x, y) != TeamEnum::None)
-            {
-                count++;
-            }
-        }
-
-        if (count < lowestValue)
-        {
-            lowestValue = count;
+            lowestValue = slotDepth;
             move = x;
         }
     }
