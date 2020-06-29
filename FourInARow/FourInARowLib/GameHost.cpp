@@ -35,6 +35,12 @@ void GameHost::startGame()
             break;
         }
 
+        if (gameRules->getGameBoard()->isFull())
+        {
+            ui->showWinner(TeamEnum::None);
+            break;
+        }
+
         currentPlayerIndex = nextPlayerIndex;
     }
 }

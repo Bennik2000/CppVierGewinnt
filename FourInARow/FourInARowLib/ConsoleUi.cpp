@@ -113,6 +113,7 @@ int ConsoleUi::readValidColumn(std::shared_ptr<GameRules> gameRules) const
 void ConsoleUi::showWinner(const TeamEnum &team) const
 {
     std::string teamString;
+
     switch (team)
     {
     case TeamEnum::Blue:
@@ -121,6 +122,9 @@ void ConsoleUi::showWinner(const TeamEnum &team) const
     case TeamEnum::Yellow:
         teamString = "Yellow";
         break;
+    case TeamEnum::None:
+        std::cout << "Game ended in a draw!" << std::endl;
+        return;
     }
     std::cout << "Team " << teamString << " has won! Congrats!" << std::endl;
 }
@@ -142,7 +146,7 @@ std::string ConsoleUi::colorizeStringByTeam(const std::string &string, const Tea
     case TeamEnum::None:
         return string;
     case TeamEnum::Blue:
-        return std::string("\x1B[94m") + string + "\033[0m"; 
+        return std::string("\x1B[94m") + string + "\033[0m";
     case TeamEnum::Yellow:
         return std::string("\x1B[33m") + string + "\033[0m";
     }

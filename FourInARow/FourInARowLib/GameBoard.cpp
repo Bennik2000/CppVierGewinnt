@@ -63,3 +63,18 @@ bool GameBoard::isValidCoordinate(int x, int y) const
 
     return xValid && yValid;
 }
+
+bool GameBoard::isFull() const
+{
+    int count = 0;
+
+    for (int x = 0; x < width; x++)
+    {
+        if (board[x][0] != TeamEnum::None)
+        {
+            count++;
+        }
+    }
+
+    return count == width;
+}
