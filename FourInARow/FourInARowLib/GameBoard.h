@@ -19,6 +19,7 @@ class GameBoard
     int getSlotDepth(int column) const;
 
     bool isValidCoordinate(int x, int y) const;
+    bool isFull() const;
 
   private:
     std::vector<std::vector<TeamEnum>> board;
