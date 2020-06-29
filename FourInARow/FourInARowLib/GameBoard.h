@@ -16,6 +16,7 @@ class GameBoard
 
     int getWidth() const;
     int getHeight() const;
+    int getSlotDepth(int column) const;
 
     bool isValidCoordinate(int x, int y) const;
 
