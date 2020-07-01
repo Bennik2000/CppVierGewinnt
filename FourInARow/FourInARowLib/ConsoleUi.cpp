@@ -105,6 +105,7 @@ int ConsoleUi::readValidColumn(std::shared_ptr<GameRules> gameRules) const
         std::cout << "Your column is inavlid, please select another one!" << std::endl;
         std::cout << "Column: ";
         std::cin >> column;
+        column--;
     }
 
     return column;
