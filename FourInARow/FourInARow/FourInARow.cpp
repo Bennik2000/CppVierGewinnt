@@ -9,9 +9,6 @@
 #include "Ui.h"
 #include <memory>
 
-
-
-
 std::shared_ptr<Player> getPlayerByUserChoice(std::shared_ptr<Ui> ui, TeamEnum team)
 {
     std::string message;
