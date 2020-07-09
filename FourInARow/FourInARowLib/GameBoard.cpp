@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include "GameBoard.h"
 
 using std::vector;

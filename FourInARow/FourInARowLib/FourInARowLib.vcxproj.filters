@@ -9,7 +9,6 @@
     <ClCompile Include="HumanPlayer.cpp" />
     <ClCompile Include="LowestLineBot.cpp" />
     <ClCompile Include="LeftColumnBot.cpp" />
-    <ClCompile Include="pch.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RandomBot.cpp" />
   </ItemGroup>
@@ -23,7 +22,6 @@
     <ClInclude Include="HumanPlayer.h" />
     <ClInclude Include="LowestLineBot.h" />
     <ClInclude Include="LeftColumnBot.h" />
-    <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RandomBot.h" />
     <ClInclude Include="TeamEnum.h" />
