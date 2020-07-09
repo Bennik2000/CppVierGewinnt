@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include "GameRules.h"
 #include "LeftColumnBot.h"
 

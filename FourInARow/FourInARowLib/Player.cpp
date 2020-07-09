@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include "Player.h"
 
 Player::Player(const std::string &name, const TeamEnum &team)

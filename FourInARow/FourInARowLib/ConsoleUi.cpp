@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include "ConsoleUi.h"
 #include "GameBoard.h"
 #include "GameRules.h"
